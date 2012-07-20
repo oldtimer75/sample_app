@@ -177,4 +177,5 @@ DEPENDENCIES
   spork (= 0.9.0)
   sqlite3 (= 1.3.5)
   uglifier (= 1.2.3)
+  win32-process
   win32console (= 1.3.0)
