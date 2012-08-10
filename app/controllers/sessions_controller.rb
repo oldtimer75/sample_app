@@ -1,5 +1,6 @@
 
 class SessionsController < ApplicationController
+#	before_filter :signed_in_twice, only: [:create, :new]
 
 	def new
 	end
@@ -19,5 +20,11 @@ class SessionsController < ApplicationController
 		sign_out
 		redirect_to root_path
 	end
+
+private
+
+#    def signed_in_twice
+#      redirect_to(root_path) unless !signed_in?
+#    end
 
 end
