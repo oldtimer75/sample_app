@@ -43,4 +43,27 @@ describe "Micropost Pages" do
 		end
 	end
 
+	describe "sidebar micropost counts" do
+		before { FactoryGirl.create(:micropost, user: user, content: "this is the first post") }
+		
+		describe "single micropost" do
+			before { visit root_path }
+			it { should have_content("1 micropost") }
+		end
+
+		describe "multiple microposts" do
+			before { FactoryGirl.create(:micropost, user: user, content: "this is the second post") }
+			before { visit root_path }
+			it { should have_content("2 microposts") }
+		end
+	end
+
+	describe "should not delete other users micrposts" do
+		before { FactoryGirl.create(:micropost, user: user, content: "a post created") }
+		let(:userb) { FactoryGirl.create(:user) }
+		before { sign_in userb }
+		before { visit user_path(user) }
+		it { should_not have_link('delete') }
+	end
+
 end
