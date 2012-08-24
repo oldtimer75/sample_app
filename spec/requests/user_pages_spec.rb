@@ -123,6 +123,17 @@ describe "User Pages" do
 					it { should have_selector('input', value: 'Follow') }
 				end
 			end
+
+			describe "following/follower counts" do
+				before do
+					other_user.follow!(user)
+					visit user_path(user)
+				end
+
+				it { should have_link("0 following", href: following_user_path(user)) }
+    			it { should have_link("1 followers", href: followers_user_path(user)) }
+
+    		end
 		end
 	end
 

@@ -5,6 +5,7 @@
       </section>
       <section>
         <%= render 'shared/stats' %>
+        <%= render partial: 'shared/followers_av', locals: { object: @users = @user.followed_users } %>
       </section>
       <section>
         <%= render 'shared/micropost_form' %>
